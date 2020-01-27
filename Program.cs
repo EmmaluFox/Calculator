@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Calculator
 {
@@ -10,29 +11,42 @@ namespace Calculator
 ************************************");
             Console.WriteLine("Please enter the operator:");
             string op = Console.ReadLine();
-
-            Console.WriteLine("Enter the first number:");
-            string x = Console.ReadLine();
-            int myInt = int.Parse(x);
-            Console.WriteLine("Enter the second number:");
-            string y = Console.ReadLine();
-            int myIntTwo = int.Parse(y);
-            string message = $@"{myInt} {op} {myIntTwo} = ";
+            
+            Console.WriteLine($@"How many numbers would you like to {op}?");
+            string alpha = Console.ReadLine();
+            int numN = int.Parse(alpha);
+            
+            int[] runningTotal = new int[numN];
+            for (int i = 0; i < numN; i++)
+            {
+                Console.WriteLine("Enter a number:");
+                string beta = Console.ReadLine();
+                int newNum = int.Parse(beta);
+                runningTotal[i] = newNum;
+            }
+            Console.ReadLine();
+       
+            string message = @"The answer is: ";
             if (op == "+")
             {
                 Console.Write($@"{message}");
-                Console.Write(myInt + myIntTwo);
+                Console.Write(runningTotal.Sum());
             } else if (op == "-")
             {
                 Console.Write($@"{message}");
-                Console.Write(myInt - myIntTwo);
+                Console.Write("");
             } else if (op == "/") {
                 Console.Write($@"{message}");
-                Console.Write(myInt / myIntTwo);
+                Console.Write("");
             } else if (op == "*") {
                 Console.Write($@"{message}");
-                Console.Write(myInt * myIntTwo);
+                Console.Write("");
             }
+        }
+        
+        private static void howManyNums()
+        {
+            
         }
     }
 }
