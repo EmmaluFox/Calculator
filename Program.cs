@@ -8,8 +8,11 @@ namespace Calculator
         static void Main(string[] args)
         {
             PrintWelcomeMessage();
-            PerformOneCalculation();
-            Console.ReadLine();
+            while (true)
+            {
+                PerformOneCalculation();
+            }
+            
         }
 
         static void PrintWelcomeMessage()
@@ -24,12 +27,10 @@ namespace Calculator
             string op = Console.ReadLine();
 
             Console.WriteLine($@"How many numbers would you like to {op}?");
-            string alpha = Console.ReadLine();
-            int numN = int.Parse(alpha);
+            int numN = EnterANumber();
 
             Console.WriteLine("Enter the first number:");
-            string gamma = Console.ReadLine();
-            int initialNum = int.Parse(gamma);
+            int initialNum = EnterANumber();
 
             string message = @"The answer is: ";
             int answer = initialNum;
@@ -37,8 +38,7 @@ namespace Calculator
             for (int i = 1; i < numN; i++)
             {
                 Console.WriteLine("Enter a number:");
-                string beta = Console.ReadLine();
-                int newNum = int.Parse(beta);
+                int newNum = EnterANumber();
 
                 if (op == "+")
                 {
@@ -58,10 +58,16 @@ namespace Calculator
                 }
             }
 
-            Console.Write($@"{message}{answer}");
+            Console.WriteLine($@"{message}{answer}");
 
         }
 
+        static int EnterANumber()
+        {
+            string number = Console.ReadLine();
+            int numX = int.Parse(number);
+            return numX;
+        }
 
     }
 }
