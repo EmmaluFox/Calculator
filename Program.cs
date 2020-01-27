@@ -66,7 +66,15 @@ namespace Calculator
         {
             string number = Console.ReadLine();
             int numX = int.Parse(number);
-            return numX;
+            if (!int.TryParse(number))
+            {
+                Console.WriteLine("Sorry, I don't understand... Please try again:");
+            }
+            else
+            {
+                return numX;
+            }
+          
         }
 
     }
