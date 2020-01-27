@@ -16,37 +16,37 @@ namespace Calculator
             string alpha = Console.ReadLine();
             int numN = int.Parse(alpha);
             
-            int[] runningTotal = new int[numN];
-            for (int i = 0; i < numN; i++)
+            Console.WriteLine("Enter the first number:");
+            string gamma = Console.ReadLine();
+            int initialNum = int.Parse(gamma);
+          
+            string message = @"The answer is: ";
+            int answer = initialNum;
+            
+            for (int i = 1; i < numN; i++)
             {
                 Console.WriteLine("Enter a number:");
                 string beta = Console.ReadLine();
                 int newNum = int.Parse(beta);
-                runningTotal[i] = newNum;
+                
+                if (op == "+")
+                {
+                    answer = answer + newNum;
+                } else if (op == "-")
+                {
+                    answer = answer - newNum;
+                } else if (op == "/") {
+                    answer = answer / newNum;
+                } else if (op == "*") {
+                    answer = answer * newNum;
+                }
             }
+            Console.Write($@"{message}{answer}");
             Console.ReadLine();
-       
-            string message = @"The answer is: ";
-            if (op == "+")
-            {
-                Console.Write($@"{message}");
-                Console.Write(runningTotal.Sum());
-            } else if (op == "-")
-            {
-                Console.Write($@"{message}");
-                Console.Write("");
-            } else if (op == "/") {
-                Console.Write($@"{message}");
-                Console.Write("");
-            } else if (op == "*") {
-                Console.Write($@"{message}");
-                Console.Write("");
             }
-        }
-        
-        private static void howManyNums()
-        {
             
-        }
+       
+            
+            
     }
 }
