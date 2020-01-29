@@ -69,6 +69,7 @@ namespace Calculator
             if (!check)
             {
                 Console.WriteLine("Sorry, I don't understand... Please try again:");
+                EnterANumber();
             }
             else
             {
