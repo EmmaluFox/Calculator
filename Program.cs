@@ -12,7 +12,7 @@ namespace Calculator
             {
                 PerformOneCalculation();
             }
-            
+
         }
 
         static void PrintWelcomeMessage()
@@ -65,17 +65,18 @@ namespace Calculator
         static int EnterANumber()
         {
             string number = Console.ReadLine();
-            int numX = int.Parse(number);
-            if (!int.TryParse(number))
+            int numX;
+            bool check = int.TryParse(number, out numX);
+            if (!check)
             {
                 Console.WriteLine("Sorry, I don't understand... Please try again:");
             }
             else
             {
-                return numX;
+                numX = int.Parse(number);
             }
-          
-        }
 
+            return numX;
+        }
     }
 }
