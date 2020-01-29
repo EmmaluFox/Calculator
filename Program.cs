@@ -75,7 +75,6 @@ namespace Calculator
             {
                 numX = int.Parse(number);
             }
-
             return numX;
         }
     }
