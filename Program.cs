@@ -23,9 +23,8 @@ namespace Calculator
 
         static void PerformOneCalculation()
         {
-            Console.WriteLine("Please enter the operator:");
-            string op = Console.ReadLine();
-
+            string op = EnterOp();
+            
             Console.WriteLine($@"How many numbers would you like to {op}?");
             int numN = EnterANumber();
 
@@ -76,6 +75,13 @@ namespace Calculator
                 numX = int.Parse(number);
             }
             return numX;
+        }
+
+        static string EnterOp()
+        {
+            Console.WriteLine("Please enter the operator:");
+            string opTemp = Console.ReadLine();
+            return opTemp;
         }
     }
 }
