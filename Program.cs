@@ -26,10 +26,10 @@ namespace Calculator
             string op = EnterOp();
             
             Console.WriteLine($@"How many numbers would you like to {op}?");
-            int numN = EnterANumber();
+            int numN = ConvertNum();
 
             Console.WriteLine("Enter the first number:");
-            int initialNum = EnterANumber();
+            int initialNum = ConvertNum();
 
             string message = @"The answer is: ";
             int answer = initialNum;
@@ -37,7 +37,7 @@ namespace Calculator
             for (int i = 1; i < numN; i++)
             {
                 Console.WriteLine("Enter a number:");
-                int newNum = EnterANumber();
+                int newNum = ConvertNum();
 
                 if (op == "+")
                 {
@@ -61,7 +61,7 @@ namespace Calculator
 
         }
 
-        static int EnterANumber()
+        static string EnterANumber()
         {
             string number = Console.ReadLine();
             int numX;
@@ -69,15 +69,22 @@ namespace Calculator
             if (!check)
             {
                 Console.WriteLine("Sorry, I don't understand... Please try again:");
-                EnterANumber();
+                numX = int.Parse(EnterANumber());
             }
-            else
-            {
-                numX = int.Parse(number);
-            }
+            number = numX.ToString();
+            return number;
+        }
+        
+
+        static int ConvertNum()
+        {
+            string number = EnterANumber();
+            int numX = int.Parse(number);
             return numX;
         }
-
+        
+        
+        
         static string EnterOp()
         {
             Console.WriteLine("Please enter the operator:");
