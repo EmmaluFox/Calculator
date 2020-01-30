@@ -17,10 +17,7 @@ namespace Calculator
         static void Main(string[] args)
         {
             MyCalculator();
-            
-            }
-
-        
+        }
 
         static void MyCalculator()
         {
