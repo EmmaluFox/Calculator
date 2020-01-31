@@ -7,17 +7,11 @@ namespace Calculator
     {
         private const int NumberCalculator = 1;
         private const int DateCalculator = 2;
-        private const int TwoDates = 1;
-        private const int Days = 2;
-        private const int TwoDateDays = 3;
-        private const int DateDays = 4;
-        private const int MainMenu = 5;
-        
         static void Main(string[] args)
         {
             MyCalculator();
         }
-        static void MyCalculator()
+        public static void MyCalculator()
         {
             PrintWelcomeMessage();
             while (true)
@@ -66,8 +60,8 @@ Please choose between:
 
             return modeX;
         }
-        
-    class NumberCalculatorClass
+    }
+     class NumberCalculatorClass
     {
         private static string EnterANumber()
         {
@@ -147,6 +141,11 @@ Please choose between:
 
     class DateCalculatorClass
     {
+        private const int TwoDates = 1;
+        private const int Days = 2;
+        private const int TwoDateDays = 3;
+        private const int DateDays = 4;
+        private const int MainMenu = 5;
         public static void PerformOneDateCalculation()
         {
             while (true)
@@ -170,7 +169,7 @@ Please choose between:
                 }
                 else if (dateMode == MainMenu)
                 {
-                    MyCalculator();
+                    Program.MyCalculator();
                 }
                 else
                 {
@@ -341,6 +340,5 @@ To subtract, just enter a negative number e.g. -10");
             }
             return daysCalc;
         }
-    }
     }
 }
