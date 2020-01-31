@@ -12,13 +12,11 @@ namespace Calculator
         private const int TwoDateDays = 3;
         private const int DateDays = 4;
         private const int MainMenu = 5;
-
-
+        
         static void Main(string[] args)
         {
             MyCalculator();
         }
-
         static void MyCalculator()
         {
             PrintWelcomeMessage();
