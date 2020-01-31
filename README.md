@@ -42,6 +42,7 @@ C# Calculator for TechSwitch
  
  
  **Tasks Still To-Do**
+ 
  11) The videos demonstrate how to write some text to a file. The method used just replaces the entire file though. Do some searching in the Microsoft
      documentation to work out how you can append text to a file. Use this knowledge to add a log to your Calculator program - it should record every
      calculation performed.
