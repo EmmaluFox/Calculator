@@ -75,6 +75,7 @@ namespace Calculator
             }
             else
             {
+                WriteToLog.Log();
                 op = EnterOp();
             }
             return op;

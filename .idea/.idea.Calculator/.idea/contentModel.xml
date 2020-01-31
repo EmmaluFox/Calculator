@@ -9,6 +9,12 @@
       <e p="Calculator.csproj" t="IncludeRecursive" />
       <e p="Calculator.sln" t="IncludeFlat" />
       <e p="DateCalculatorClass.cs" t="Include" />
+      <e p="Log.cs" t="Include" />
+      <e p="logs" t="Include">
+        <e p="WriteLines.txt" t="Include" />
+        <e p="WriteLines2.txt" t="Include" />
+        <e p="WriteText.txt" t="Include" />
+      </e>
       <e p="NumberCalculatorClass.cs" t="Include" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
