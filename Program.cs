@@ -27,14 +27,13 @@ namespace Calculator
                 int calculationMode = AskForCalculationMode();
                 if (calculationMode == NumberCalculator)
                 {
-                    PerformOneNumberCalculation();
+                    NumberCalculatorClass.PerformOneNumberCalculation();
                 }
                 else if (calculationMode == DateCalculator)
                 {
-                    PerformOneDateCalculation();
+                    DateCalculatorClass.PerformOneDateCalculation();
                 }
             }
-
         }
 
         static void PrintWelcomeMessage()
@@ -42,8 +41,57 @@ namespace Calculator
             Console.WriteLine(@"Welcome to the calculator!
 ************************************");
         }
+        
+        static int AskForCalculationMode()
+        {
+            Console.WriteLine("Choose a calculation mode:");
+            Console.Write(@"1: Number Mode
+2: Date Mode
+");
+            int modeX = int.Parse(Console.ReadLine());
+            if (modeX == NumberCalculator)
+            {
+                Console.WriteLine("Number mode selected");
+            }
+            else if (modeX == DateCalculator)
+            {
+                Console.WriteLine("Date mode selected");
+            }
+            else
+            {
+                Console.WriteLine(@"Invalid selection. 
+Please choose between:
+1) for Number mode
+2) for Date mode");
+                modeX = int.Parse(Console.ReadLine());
+            }
 
-        static void PerformOneNumberCalculation()
+            return modeX;
+        }
+        
+    class NumberCalculatorClass
+    {
+        private static string EnterANumber()
+        {
+            string number = Console.ReadLine();
+            int numX;
+            bool check = int.TryParse(number, out numX);
+            if (!check)
+            {
+                Console.WriteLine("Sorry, I don't understand... Please try again:");
+                numX = int.Parse(EnterANumber());
+            }
+            number = numX.ToString();
+            return number;
+        }
+        
+        public static int ConvertNum()
+        {
+            string number = EnterANumber();
+            int numX = int.Parse(number);
+            return numX;
+        }
+        public static void PerformOneNumberCalculation()
         {
             string op = EnterOp();
 
@@ -77,39 +125,11 @@ namespace Calculator
                 {
                     answer = answer * newNum;
                 }
-                
             }
-
             Console.WriteLine($@"{message}{answer}
 ");
 
         }
-
-        static string EnterANumber()
-        {
-            string number = Console.ReadLine();
-            int numX;
-            bool check = int.TryParse(number, out numX);
-            if (!check)
-            {
-                Console.WriteLine("Sorry, I don't understand... Please try again:");
-                numX = int.Parse(EnterANumber());
-            }
-
-            number = numX.ToString();
-            return number;
-        }
-
-
-        static int ConvertNum()
-        {
-            string number = EnterANumber();
-            int numX = int.Parse(number);
-            return numX;
-        }
-
-
-
         static string EnterOp()
         {
             Console.WriteLine("Please enter the operator:");
@@ -125,35 +145,11 @@ namespace Calculator
             }
             return op;
         }
+    }
 
-        static int AskForCalculationMode()
-        {
-            Console.WriteLine("Choose a calculation mode:");
-            Console.Write(@"1: Number Mode
-2: Date Mode
-");
-            int modeX = int.Parse(Console.ReadLine());
-            if (modeX == NumberCalculator)
-            {
-                Console.WriteLine("Number mode selected");
-            }
-            else if (modeX == DateCalculator)
-            {
-                Console.WriteLine("Date mode selected");
-            }
-            else
-            {
-                Console.WriteLine(@"Invalid selection. 
-Please choose between:
-1) for Number mode
-2) for Date mode");
-                modeX = int.Parse(Console.ReadLine());
-            }
-
-            return modeX;
-        }
-
-        static void PerformOneDateCalculation()
+    class DateCalculatorClass
+    {
+        public static void PerformOneDateCalculation()
         {
             while (true)
             {
@@ -187,7 +183,7 @@ Please choose between:
         }
 
 
-        static string EnterADate()
+        private static string EnterADate()
         {
             Console.WriteLine("Enter a date:");
             string dateOne = Console.ReadLine();
@@ -204,14 +200,14 @@ Please choose between:
         }
 
 
-        static DateTime ConvertDate()
+        private static DateTime ConvertDate()
         {
             string dateOne = EnterADate();
             DateTime dateX = DateTime.Parse(dateOne);
             return dateX;
         }
 
-        static int AskForDateMode()
+        private static int AskForDateMode()
         {
             Console.WriteLine("What would you like to calculate?");
             Console.Write(@"Please choose between:
@@ -259,7 +255,7 @@ Please choose between:
             return modeX;
         }
 
-        static TimeSpan CalcTwoDates()
+        private static TimeSpan CalcTwoDates()
         {
             DateTime dateX = ConvertDate();
             string dateXStr = dateX.ToShortDateString();
@@ -282,7 +278,7 @@ Please choose between:
             return dateSpan;
         }
 
-        static TimeSpan CalcDays()
+        private static TimeSpan CalcDays()
         {
             DateTime dateX = ConvertDate();
             string dateXStr = dateX.ToShortDateString();
@@ -302,14 +298,13 @@ Please choose between:
             }
 
             return dateSpan;
-
         }
 
-        static DateTime CalcTwoDateDays()
+       private static DateTime CalcTwoDateDays()
         {
             DateTime dateY = ConvertDate();
             Console.WriteLine("Please enter the number of days: (To subtract, just enter a negative number e.g. -10)");
-            int daysX = ConvertNum();
+            int daysX = NumberCalculatorClass.ConvertNum();
             string dateYStr = dateY.ToShortDateString();
             DateTime daysCalc = dateY.AddDays(daysX);
             string daysDate = daysCalc.ToShortDateString();
@@ -327,11 +322,11 @@ Please choose between:
 
             return daysCalc;
         }
-        static DateTime CalcDateDays()
+        private static DateTime CalcDateDays()
         {
             Console.WriteLine(@"Please enter the number of days.
 To subtract, just enter a negative number e.g. -10");
-            int daysX = ConvertNum();
+            int daysX = NumberCalculatorClass.ConvertNum();
             DateTime daysCalc = DateTime.Now.AddDays(daysX);
             string daysDate = daysCalc.ToShortDateString();
             int daysY = daysX * -1;
@@ -346,11 +341,8 @@ To subtract, just enter a negative number e.g. -10");
                 Console.WriteLine($@"The date {daysY} days ago was {daysDate}
 ");
             }
-
             return daysCalc;
         }
-
-
-
+    }
     }
 }
